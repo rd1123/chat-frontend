@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <title>Nestjs SocketIO Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="row">
+      <div id="chat">
+        <input type="text" v-model="memberId" id="username" placeholder="Enter name...">
+        <button id="send" class="btn" margin="10" @click.prevent="chatroomListRegis()">Check</button>
+      </div>
+
+      <div class="col-md-6 offset-md-3 col-sm-12">
+        <h1 class="text-center">{{ this.title }}</h1>
+        <br>
+        <div id="status"></div>
+        <div class="card">
+          <div id="messages" class="card-block">
+            <ul>
+              <li>{{ name }} {{ message }}</li>
+            </ul>
+          </div>
+        </div>
+        <div id="chat">
+          <button onclick="location.href = './chat.html';" id="chatroom" class="btn">
+            go to chat
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

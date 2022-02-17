@@ -18,7 +18,6 @@ const app = new Vue({
           type: 'text',
         }
         this.socket.emit('chatroomMessage', message);
-        // this.text = ''
       }
     },
     chatroomUpdated() {
@@ -29,26 +28,16 @@ const app = new Vue({
       this.socket.emit('chatroomUpdated', content)
       this.text = ''
     },
-    chatroomJoin() {
-      const content = {
-        chatGuy: this.chatGuy,
-        member: this.name,
-      }
-      this.socket.emit('chatroomJoin', content)
-    },
     receivedMessage(message) {
       this.messages.push(message)
     },
     validateInput() {
       return this.name.length > 0 && this.text.length > 0
     },
-    // choseChatGuy() {
-    //   this.chatGuy = chatGuy
-    // }
   },
   created() {
     this.socket = io('http://localhost:80')
-    this.socket.on('msgToClient', (message) => {
+    this.socket.on('chatroomMessage', (message) => {
       this.receivedMessage(message)
     })
 

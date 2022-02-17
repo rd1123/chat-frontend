@@ -16,19 +16,19 @@ const app = new Vue({
     receivedMessage(message) {
       this.message = ''
       this.name = ''
-      this.message = message.text
+      this.message = message.content
       this.name = message.name + ' :'
     },
-    chatroomListRegis() {
+    chatroomUpdatedRegis() {
       const content = {
-        memberId: this.memberId
+        receiverId: this.memberId
       }
-      this.socket.emit('chatroomList', content)
+      this.socket.emit('chatroomUpdated', content)
     },
   },
   created() {
     this.socket = io('http://localhost:80')
-    this.socket.on('chatroomUpdatedClient', (message) => {
+    this.socket.on('chatroomUpdated', (message) => {
       this.receivedMessage(message);
     })
 
